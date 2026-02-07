@@ -24,7 +24,11 @@ export default {
     const prompt = `A high-quality image of a ${animal} holding up a sign with the words "${targetWidth} by ${targetHeight}"`
 
     // Generate the image
-    const imageUrl = await generateImage(prompt, env)
+		const imageUrl = await generateImage(prompt, env)
+
+		// Upload the image to Cloudflare Images
+const cloudflareImageId = await uploadToCloudflareImages(imageUrl, env)
+		
         
     // Fetch the image and return it
     const imageResponse = await fetch(imageUrl)
